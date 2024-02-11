@@ -84,10 +84,12 @@ const Calculator = () => {
   };
 
   return (
-    <div className="App" style={{ backgroundColor: 'white', borderRadius: '2rem', width: '40rem', height: '40rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+    <div className="App" style={{ backgroundColor: 'white', borderRadius: '2rem',
+       display: 'flex', flexGrow: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', maxWidth: '34rem', margin: '2rem' }}>
       <div
         style={{
-          width: '30rem',
+          maxWidth: '30rem',
+          minWidth: '15rem',
           height: '30rem',
           display: 'grid',
           borderRadius: '2rem',
@@ -97,7 +99,8 @@ const Calculator = () => {
           overflow: 'hidden',
           gridTemplateColumns: '1fr 1fr 1fr 1fr',
           gridTemplateRows: '1fr 1fr 1fr 1fr 1fr 1fr',
-
+          margin: '2rem',
+          flexGrow: 1,
         }}
       >
         <div
