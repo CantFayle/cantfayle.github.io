@@ -48,11 +48,15 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
+      - name: List files
+        run: ls -a
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - name: List files
+        run: ls -a
       - name: Setup Pages
         uses: actions/configure-pages@v4
         with:
@@ -61,6 +65,8 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
+      - name: List files
+        run: ls -a
       - name: Restore cache
         uses: actions/cache@v4
         with:
@@ -71,14 +77,16 @@ jobs:
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+      - name: List files
+        run: ls -a
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: List files
+        run: ls -a
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: List files
-        run: |
-          sleep 2
-          ls -a
+        run: ls -a
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
