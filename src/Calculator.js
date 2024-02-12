@@ -33,7 +33,18 @@ const alignCenter = {
 };
 
 const numberPad = [...Array.from({length: 10}, (_, i) => i).reverse(), '.'];
-const operators = [{value: '+'}, {value: '-'}, {value: '*', display: '×'}, {value: '/', display: '÷'}];
+const operators = [ '+', '-', '*', '/' ];
+
+const formatOperator = operator => {
+  switch(operator) {
+    case '*':
+      return '×';
+    case '/':
+      return '÷';
+    default:
+      return operator;
+  }
+}
 
 const Calculator = () => {
   const [a, setA] = useState(0);
@@ -42,14 +53,16 @@ const Calculator = () => {
   const [result, setResult] = useState(a);
   const [value, setValue] = useState(result);
 
-  const setIfNotNull = v => v !== null && setValue(parseFloat(v));
-
   useEffect(() => {
-    setIfNotNull(a)
+    a !== null && setValue(parseFloat(a));
   }, [a]);
 
   useEffect(() => {
-    setIfNotNull(b);
+    operator !== null && setValue(`${parseFloat(a)} ${formatOperator(operator)}`);
+  }, [operator])
+
+  useEffect(() => {
+    b !== null && setValue(`${parseFloat(a)} ${formatOperator(operator)} ${parseFloat(b)}`);
   }, [b]);
 
   useEffect(() => {
@@ -78,8 +91,8 @@ const Calculator = () => {
   };
 
   const clear = () => {
-    setB(null);
     setA(null);
+    setB(null);
     setOperator(null);
   };
 
@@ -98,7 +111,7 @@ const Calculator = () => {
           borderStyle: 'solid',
           overflow: 'hidden',
           gridTemplateColumns: '1fr 1fr 1fr 1fr',
-          gridTemplateRows: '1fr 1fr 1fr 1fr 1fr 1fr',
+          gridTemplateRows: '1fr 1fr 1fr 1fr 1fr 1fr 1fr',
           margin: '2rem',
           flexGrow: 1,
         }}
@@ -129,9 +142,9 @@ const Calculator = () => {
               ...operatorButtonStyle,
               ...alignCenter,
             }}
-            onClick={() => clickOperator(operator.value)}
+            onClick={() => clickOperator(operator)}
           >
-            {operator.display ?? operator.value}
+            {formatOperator(operator)}
           </div>
         )}
         {numberPad.map((number, index) => {
@@ -171,10 +184,54 @@ const Calculator = () => {
         </div>
         <div
           style={{
+            gridColumnStart: 1,
+            gridColumnEnd: 2,
+            gridRowStart: 7,
+            gridRowEnd: 8,
+            ...numberButtonStyle,
+            ...alignCenter,
+          }}
+          onClick={() => {}}
+        >
+          ⎌
+        </div>
+        <div
+          style={{
+            gridColumnStart: 2,
+            gridColumnEnd: 3,
+            gridRowStart: 7,
+            gridRowEnd: 8,
+            ...numberButtonStyle,
+            ...alignCenter,
+            transform: 'scale(-1, 1)'
+          }}
+          onClick={() => {}}
+        >
+          ⎌
+        </div>
+        <div
+          style={{
+            gridColumnStart: 3,
+            gridColumnEnd: 4,
+            gridRowStart: 7,
+            gridRowEnd: 8,
+            ...numberButtonStyle,
+            ...alignCenter,
+          }}
+          onClick={() => {
+            clear();
+            setValue(0);
+            setResult(0);
+          }}
+        >
+          CE
+        </div>
+        <div
+          style={{
             gridColumnStart: 4,
             gridColumnEnd: 5,
             gridRowStart: 3,
-            gridRowEnd: 7,
+            gridRowEnd: 8,
             ...equalsButtonStyle,
             ...alignCenter,
           }}
