@@ -29,7 +29,7 @@ const alignCenter = {
   justifyContent: 'center',
   alignContent: 'center',
   flexDirection: 'column',
-  fontSize: '36px',
+  fontSize: '1em',
 };
 
 const numberPad = [...Array.from({length: 10}, (_, i) => i).reverse(), '.'];
@@ -54,7 +54,7 @@ const Calculator = () => {
   const [value, setValue] = useState(result);
 
   useEffect(() => {
-    a !== null && setValue(parseFloat(a));
+    a !== null && setValue(a);
   }, [a]);
 
   useEffect(() => {
@@ -62,16 +62,22 @@ const Calculator = () => {
   }, [operator])
 
   useEffect(() => {
-    b !== null && setValue(`${parseFloat(a)} ${formatOperator(operator)} ${parseFloat(b)}`);
+    b !== null && setValue(`${a} ${formatOperator(operator)} ${b}`);
   }, [b]);
 
   useEffect(() => {
-    console.log('trigger');
     setValue(result);
   }, [result]);
 
   const clickNumber = (number) => {
-    const assignValue = v => v === null ? parseFloat(number) : parseFloat(v + '' + number);
+    const assignValue = v => {
+      let original = v ?? 0;
+      const newNumber = original + '' + number;
+      const count = (newNumber.match(/\./g) || []).length;
+      if (count > 1) return original;
+      else if (count === 1) return newNumber;
+      return parseInt(newNumber);
+    }
     if (operator) setB(assignValue);
     else setA(assignValue);
   };
@@ -97,22 +103,35 @@ const Calculator = () => {
   };
 
   return (
-    <div className="App" style={{ backgroundColor: 'white', borderRadius: '2rem',
-       display: 'flex', flexGrow: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', maxWidth: '34rem', margin: '2rem' }}>
+    <div
+      className="App"
+      style={{
+        backgroundColor: 'white',
+        borderRadius: '2em',
+        display: 'flex',
+        flexGrow: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        maxWidth: '34rem',
+        margin: '2em'
+      }}
+    >
       <div
         style={{
           maxWidth: '30rem',
-          minWidth: '15rem',
-          height: '30rem',
+          minWidth: '10em',
+          maxHeight: '30rem',
+          minHeight: '10em',
           display: 'grid',
-          borderRadius: '2rem',
+          borderRadius: '2em',
           borderColor: '#A6A7A8',
           borderWidth: '1px',
           borderStyle: 'solid',
           overflow: 'hidden',
-          gridTemplateColumns: '1fr 1fr 1fr 1fr',
-          gridTemplateRows: '1fr 1fr 1fr 1fr 1fr 1fr 1fr',
-          margin: '2rem',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gridTemplateRows: 'repeat(7, 1fr)',
+          margin: '2em',
           flexGrow: 1,
         }}
       >
@@ -126,8 +145,8 @@ const Calculator = () => {
             color: 'white',
             ...alignCenter,
             textAlign: 'right',
-            padding: '2rem',
-            height: '2rem',
+            padding: '1.5em',
+            //height: '3em',
           }}
         >
           {value}
@@ -148,7 +167,6 @@ const Calculator = () => {
           </div>
         )}
         {numberPad.map((number, index) => {
-          console.log(number, index, parseInt(index / 3) + 1, parseInt(index % 3) + 1);
           return (
             <div
               style={{
