@@ -129,7 +129,7 @@ const Calculator = () => {
           borderWidth: '1px',
           borderStyle: 'solid',
           overflow: 'hidden',
-          gridTemplateColumns: 'repeat(4, 1fr)',
+          gridTemplateColumns: 'repeat(12, 1fr)',
           gridTemplateRows: 'repeat(7, 1fr)',
           margin: '2em',
           flexGrow: 1,
@@ -138,7 +138,7 @@ const Calculator = () => {
         <div
           style={{
             gridColumnStart: 1,
-            gridColumnEnd: 5,
+            gridColumnEnd: 13,
             gridRowStart: 1,
             gridRowEnd: 2,
             backgroundColor: '#252525',
@@ -146,7 +146,6 @@ const Calculator = () => {
             ...alignCenter,
             textAlign: 'right',
             padding: '1.5em',
-            //height: '3em',
           }}
         >
           {value}
@@ -154,8 +153,8 @@ const Calculator = () => {
         {operators.map((operator, index) =>
           <div
             style={{
-              gridColumnStart: index + 1,
-              gridColumnEnd: index + 2,
+              gridColumnStart: (index * 3) + 1,
+              gridColumnEnd: (index * 3) + 4,
               gridRowStart: 2,
               gridRowEnd: 3,
               ...operatorButtonStyle,
@@ -170,8 +169,8 @@ const Calculator = () => {
           return (
             <div
               style={{
-                gridColumnStart: parseInt(index % 3) + 1,
-                gridColumnEnd: parseInt(index % 3) + 2,
+                gridColumnStart: (parseInt(index % 3) * 3) + 1,
+                gridColumnEnd: (parseInt(index % 3) * 3) + 4,
                 gridRowStart: parseInt(index / 3) + 3,
                 gridRowEnd: parseInt(index / 3) + 4,
                 ...numberButtonStyle,
@@ -185,8 +184,8 @@ const Calculator = () => {
         })}
         <div
           style={{
-            gridColumnStart: 3,
-            gridColumnEnd: 4,
+            gridColumnStart: 7,
+            gridColumnEnd: 10,
             gridRowStart: 6,
             gridRowEnd: 7,
             ...numberButtonStyle,
@@ -203,7 +202,7 @@ const Calculator = () => {
         <div
           style={{
             gridColumnStart: 1,
-            gridColumnEnd: 2,
+            gridColumnEnd: 4,
             gridRowStart: 7,
             gridRowEnd: 8,
             ...numberButtonStyle,
@@ -215,8 +214,8 @@ const Calculator = () => {
         </div>
         <div
           style={{
-            gridColumnStart: 2,
-            gridColumnEnd: 3,
+            gridColumnStart: 4,
+            gridColumnEnd: 7,
             gridRowStart: 7,
             gridRowEnd: 8,
             ...numberButtonStyle,
@@ -229,8 +228,8 @@ const Calculator = () => {
         </div>
         <div
           style={{
-            gridColumnStart: 3,
-            gridColumnEnd: 4,
+            gridColumnStart: 7,
+            gridColumnEnd: 10,
             gridRowStart: 7,
             gridRowEnd: 8,
             ...numberButtonStyle,
@@ -246,8 +245,8 @@ const Calculator = () => {
         </div>
         <div
           style={{
-            gridColumnStart: 4,
-            gridColumnEnd: 5,
+            gridColumnStart: 10,
+            gridColumnEnd: 13,
             gridRowStart: 3,
             gridRowEnd: 8,
             ...equalsButtonStyle,
