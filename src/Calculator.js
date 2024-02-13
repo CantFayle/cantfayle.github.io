@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
 const buttonStyle = {
-  borderColor: '#A6A7A8',
-  borderWidth: '1px',
-  borderStyle: 'solid',
-  color: '#252525',
   cursor: 'pointer',
 };
 
 const operatorButtonStyle = {
   ...buttonStyle,
-  backgroundColor: '#C7C7C7',
+  backgroundColor: '#1e1e1e',
+  color: '#E9E9E9',
 };
 
 const numberButtonStyle = {
   ...buttonStyle,
-  backgroundColor: '#E9E9E9',
+  backgroundColor: '#181818',
+  color: '#E9E9E9',
 };
 
 const equalsButtonStyle = {
   ...buttonStyle,
   color: 'white',
-  backgroundColor: '#F88765',
+  backgroundColor: '#89321a',
 }
 
 const alignCenter = {
@@ -89,11 +87,8 @@ const Calculator = () => {
 
   const calculate = () => {
     if (b === null) return;
-    setValue('');
-    setTimeout(() => {
-      setResult(parseFloat(eval(`${a} ${operator} ${b}`)));
-      clear();
-    }, 100);
+    setResult(parseFloat(eval(`${a} ${operator} ${b}`)));
+    clear();
   };
 
   const clear = () => {
@@ -103,36 +98,20 @@ const Calculator = () => {
   };
 
   return (
-    <div
-      className="App"
-      style={{
-        backgroundColor: 'white',
-        borderRadius: '2em',
-        display: 'flex',
-        flexGrow: 1,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        maxWidth: '34rem',
-        margin: '2em'
-      }}
-    >
       <div
         style={{
           maxWidth: '30rem',
-          minWidth: '10em',
+          minWidth: '15em',
           maxHeight: '30rem',
-          minHeight: '10em',
+          minHeight: '15em',
           display: 'grid',
           borderRadius: '2em',
-          borderColor: '#A6A7A8',
-          borderWidth: '1px',
-          borderStyle: 'solid',
           overflow: 'hidden',
           gridTemplateColumns: 'repeat(12, 1fr)',
-          gridTemplateRows: 'repeat(7, 1fr)',
+          gridTemplateRows: 'repeat(6, 1fr)',
           margin: '2em',
           flexGrow: 1,
+          aspectRatio: 1,
         }}
       >
         <div
@@ -199,7 +178,7 @@ const Calculator = () => {
         >
           C
         </div>
-        <div
+        {/*<div
           style={{
             gridColumnStart: 1,
             gridColumnEnd: 4,
@@ -242,7 +221,7 @@ const Calculator = () => {
           }}
         >
           CE
-        </div>
+        </div>*/}
         <div
           style={{
             gridColumnStart: 10,
@@ -257,7 +236,6 @@ const Calculator = () => {
           =
         </div>
       </div>
-    </div>
   );
 }
 
