@@ -57,10 +57,12 @@ const Calculator = () => {
 
   useEffect(() => {
     operator !== null && setValue(`${parseFloat(a)} ${formatOperator(operator)}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [operator])
 
   useEffect(() => {
     b !== null && setValue(`${a} ${formatOperator(operator)} ${b}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [b]);
 
   useEffect(() => {
@@ -87,6 +89,7 @@ const Calculator = () => {
 
   const calculate = () => {
     if (b === null) return;
+    // eslint-disable-next-line no-eval
     setResult(parseFloat(eval(`${a} ${operator} ${b}`)));
     clear();
   };

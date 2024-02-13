@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import qr from './qr-code.svg';
-import Calculator from './Calculator';
 
 const navItems = [
   {
