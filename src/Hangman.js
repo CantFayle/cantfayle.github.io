@@ -16,7 +16,7 @@ const Hangman = () => {
   const [lose, setLose] = useState(false);
   const gameOver = win || lose;
 
-  const generateWord = () => generate({ minLength: 4, maxLength: 8 });
+  const generateWord = () => generate({ minLength: 5, maxLength: 9 });
 
   useEffect(() => setWord(generateWord()), []);
 

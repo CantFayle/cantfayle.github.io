@@ -1,52 +1,39 @@
 import React, { useState } from 'react';
-import './App.css';
-import qrSquare from './qr-square.png';
+import {
+  Routes,
+  Route,
+  Link,
+  useLocation,
+  matchRoutes,
+} from 'react-router-dom';
 import { DarkModeToggle } from './DarkModeToggle';
+import Home from './Home';
 import Experience from './Experience';
 import Hangman from './Hangman';
+import Contact from './Contact';
+import './App.css';
 
 const navItems = [
   {
     title: 'Home',
-    content: () => 
-      <div className="home">
-        {`
-          An experienced software developer and technical lead with a proven track record of delivery.
-          \n
-          Comfortable standing up to share my opinion, and an advocate for personal growth and positive change.
-          \n
-          Under all that, a person who just loves a puzzle.
-       `}
-      </div>
+    link: '/',
   },
   {
     title: 'Experience',
-    content: () => 
-      <Experience/>
+    link: '/experience',
   },
   {
-    title: 'Play a game',
-    content: () => 
-      <Hangman/>
+    title: 'Play',
+    link: '/projects',
   },
   {
     title: 'Contact',
-    content: () =>
-      <div className="contact">
-        <a href="https://github.com/CantFayle" className="contact-link">
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/conor-fayle-6731ba130/" className="contact-link">
-         LinkedIn
-        </a>
-        <img src={qrSquare} className="qr" alt={"QR"}/>
-      </div>
+    link: '/contact',
   },
 ];
 
 function App() {
-  const getNav = navTitle => navItems.find(({ title }) => title === navTitle);
-  const [selectedNav, setSelectedNav] = useState(getNav('Home'));
+  const location = useLocation();
   return (
     <div className="page">
       <div className="frame">
@@ -58,21 +45,26 @@ function App() {
             Software Developer
           </div>
           <div className="content">
-            <div className="navigation">
+            <ul className="navigation">
               {navItems.map(navItem => {
-                const isSelected = navItem.title === selectedNav.title;
+                const isSelected = navItem.link === location.pathname;
                 return (
-                  <div
+                  <Link
                     className={`nav-item ${isSelected ? 'nav-item-selected' : ''}`}
-                    onClick={() => setSelectedNav(navItem)}
+                    to={navItem.link}
                   >
                     {isSelected ? '⦿' : navItem.title}
-                  </div>
+                  </Link>
                 );
               })}
-            </div>
+            </ul>
             <div className="section">
-              {selectedNav.content()}
+              <Routes>
+                <Route path="/" element={<Home />}/>
+                <Route path="/experience" element={<Experience />}/>
+                <Route path="/projects" element={<Hangman />}/>
+                <Route path="/contact" element={<Contact />}/>
+              </Routes>
             </div>
           </div>
         </div>
