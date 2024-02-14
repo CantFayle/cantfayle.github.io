@@ -23,6 +23,7 @@ body.dark {
   text-align: center;
   background-color: var(--color-background);
   color: var(--color-foreground);
+  overflow: hidden;
 }
 
 .frame {
@@ -134,6 +135,10 @@ body.dark {
 .contact a {
   color: var(--color-foreground);
   text-decoration: underline dotted;
+}
+
+.contact-link {
+  font-size: 1.5em;
 }
 
 .qr {

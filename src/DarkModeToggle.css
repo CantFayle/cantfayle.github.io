@@ -1,5 +1,5 @@
 .toggle-container {
-    position: absolute;
+    position: fixed;
     bottom: calc(var(--pad) - var(--pad) / 2 - 0.4em);
     left: var(--pad);
     display: flex;

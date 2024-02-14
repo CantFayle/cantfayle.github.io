@@ -24,10 +24,10 @@ const navItems = [
     title: 'Contact',
     content: () =>
       <div className="contact">
-        <a href="https://github.com/CantFayle">
+        <a href="https://github.com/CantFayle" className="contact-link">
           GitHub
         </a>
-        <a href="https://www.linkedin.com/in/conor-fayle-6731ba130/">
+        <a href="https://www.linkedin.com/in/conor-fayle-6731ba130/" className="contact-link">
          LinkedIn
         </a>
         <img src={qrSquare} className="qr" alt={"QR"}/>
