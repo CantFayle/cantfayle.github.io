@@ -9,7 +9,7 @@
 }
 
 .sub-section {
-    padding-right: 5vw;
+    padding-right: min(5vw, 2em);
 }
 
 .job-title-section-container {
