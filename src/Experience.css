@@ -1,6 +1,7 @@
 
 .experience-container {
     overflow: auto;
+    width: 100%;
 }
 
 .experience-section {
