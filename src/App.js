@@ -3,6 +3,7 @@ import './App.css';
 import qrSquare from './qr-square.png';
 import { DarkModeToggle } from './DarkModeToggle';
 import Experience from './Experience';
+import Hangman from './Hangman';
 
 const navItems = [
   {
@@ -19,6 +20,11 @@ const navItems = [
     title: 'Experience',
     content: () => 
       <Experience/>
+  },
+  {
+    title: 'Projects',
+    content: () => 
+      <Hangman/>
   },
   {
     title: 'Contact',

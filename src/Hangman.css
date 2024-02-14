@@ -1,0 +1,186 @@
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4em;
+    position: fixed;
+    bottom: calc(var(--pad) * 2);
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: min(var(--container-width), 30em);
+}
+
+/* Gallows & Hanged Man */
+.gallows-container {
+    position: relative;
+}
+.gallows-stage-1 {
+    position: absolute;
+    bottom: 10px;
+    left: -40px;
+    height: 1px;
+    width: 6em;
+    border-bottom: var(--color-foreground) 1px solid;
+}
+.gallows-stage-2 {
+    position: absolute;
+    bottom: 10px;
+    left: -30px;
+    height: 10em;
+    width: 1px;
+    border-right: var(--color-foreground) 1px solid;
+}
+.gallows-stage-3 {
+    position: absolute;
+    bottom: calc(10px + 10em);
+    left: -29px;
+    height: 1px;
+    width: 6em;
+    border-bottom: var(--color-foreground) 1px solid;
+}
+.gallows-stage-4 {
+    position: absolute;
+    bottom: calc(10px + 9em);
+    left: calc(-31px + 6em) ;
+    height: 1em;
+    width: 1px;
+    border-right: var(--color-foreground) 1px solid;
+}
+.gallows-stage-5 {
+    position: absolute;
+    bottom: calc(9px + 7em);
+    left: calc(-31px + 5em) ;
+    height: 2em;
+    width: 2em;
+    border: var(--color-foreground) 1px solid;
+    border-radius: 50%;
+}
+.gallows-stage-6 {
+    position: absolute;
+    bottom: calc(10px + 4em);
+    left: calc(-31px + 6em) ;
+    height: 3em;
+    width: 1px;
+    border-right: var(--color-foreground) 1px solid;
+}
+.gallows-stage-7 {
+    position: absolute;
+    bottom: calc(10px + 5.2em);
+    left: calc(-31px + 5.2em);
+    height: 2em;
+    width: 1px;
+    border-left: var(--color-foreground) 1px solid;
+    transform: rotate(-70deg);
+}
+.gallows-stage-8 {
+    position: absolute;
+    bottom: calc(10px + 5.2em);
+    left: calc(-31px + 6.9em);
+    height: 2em;
+    width: 1px;
+    border-right: var(--color-foreground) 1px solid;
+    transform: rotate(70deg);
+}
+.gallows-stage-9 {
+    position: absolute;
+    bottom: calc(10px + 1.8em);
+    left: calc(-31px + 5.6em);
+    height: 2.5em;
+    width: 1px;
+    border-left: var(--color-foreground) 1px solid;
+    transform: rotate(25deg);
+}
+.gallows-stage-10 {
+    position: absolute;
+    bottom: calc(10px + 1.8em);
+    left: calc(-31px + 6.51em);
+    height: 2.5em;
+    width: 1px;
+    border-right: var(--color-foreground) 1px solid;
+    transform: rotate(-25deg);
+}
+.gallows-lose-left {
+    position: absolute;
+    bottom: calc(9px + 10em);
+    left: calc(-31px + 7em);
+    font-size: 10px;
+    color: var(--color-foreground);
+}
+.gallows-lose-right {
+    position: absolute;
+    bottom: calc(9px + 10em);
+    left: calc(-31px + 8em);
+    font-size: 10px;
+    color: var(--color-foreground);
+}
+
+
+/* Game Over */
+.game-over {
+    z-index: 10;
+    opacity: 0.7;
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+    text-align: center;
+    padding: 1em 0;
+}
+
+.game-over div {
+    font-size: 2em;
+}
+
+.game-over button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    font-size: 1.2em;
+    text-decoration: underline dotted;
+    cursor: pointer;
+}
+
+/* Displayed word */
+.letters {
+    display: flex;
+    flex-direction: row;
+    gap: 0.4em;
+}
+
+.letter {
+    height: 4vh;
+    width: 3vh;
+    border-bottom-style: solid;
+    border-bottom-color: var(--color-foreground);
+    border-bottom-width: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 3vh;
+}
+
+/* Keyboard */
+.keyboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4em;
+}
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.4em;
+}
+
+.keyboard-letter {
+    font-size: min(8vw, 2em);
+    cursor: pointer;
+}
+
+.keyboard-letter-used {
+    color: grey;
+    cursor: default;
+}
