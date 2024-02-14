@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import qrSquare from './qr-square.png';
 import { DarkModeToggle } from './DarkModeToggle';
+import Experience from './Experience';
 
 const navItems = [
   {
@@ -16,18 +17,21 @@ const navItems = [
   },
   {
     title: 'Experience',
-    content: () => `More to come...`
-  },
-  {
-    title: 'Projects',
-    content: () => `More to come...`
+    content: () => 
+      <Experience/>
   },
   {
     title: 'Contact',
     content: () =>
-      <>
+      <div className="contact">
+        <a href="https://github.com/CantFayle">
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/conor-fayle-6731ba130/">
+         LinkedIn
+        </a>
         <img src={qrSquare} className="qr" alt={"QR"}/>
-      </>
+      </div>
   },
 ];
 

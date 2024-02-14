@@ -1,0 +1,36 @@
+
+.experience-container {
+    overflow: auto;
+}
+
+.experience-section {
+    margin-bottom: 3em;
+}
+
+.sub-section {
+    padding-right: 5vw;
+}
+
+.job-title-section-container {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 2em;
+}
+
+@media (max-width: 370px) {
+    .job-title-section-container {
+        flex-direction: column;
+        gap: 0.5em;
+    }
+}
+
+.job-title-section {
+}
+
+.no-bullets {
+    list-style-type: none;
+}
+
+.responsibility {
+    margin-bottom: 0.5em;
+}

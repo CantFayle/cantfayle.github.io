@@ -49,6 +49,7 @@ body.dark {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  overflow: hidden;
   /*height: var(--container-height);*/
   /*width: var(--container-width);*/
 }
@@ -73,10 +74,19 @@ body.dark {
   justify-content: space-between;
   align-content: space-between;
   width: 100%;
+  height: calc(100% - 4em);
+  padding-top: 1em;
+}
+
+@media (max-width: 370px) {
+  .content {
+    flex-direction: column;
+    gap: 1em;
+  }
 }
 
 .navigation {
-  padding-top: 2em;
+  padding-top: 1em;
   margin-right: 0.5em;
   display: flex;
   flex-direction: column;
@@ -107,7 +117,23 @@ body.dark {
   white-space: pre-line;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: flex-end;
+  height: 100%;
+  overflow: auto;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  gap: 5px;
+}
+
+.contact a {
+  color: var(--color-foreground);
+  text-decoration: underline dotted;
 }
 
 .qr {
@@ -116,5 +142,6 @@ body.dark {
   flex-grow: 1;
   aspect-ratio: 1;
   filter: invert(var(--is-dark));
-  margin: 0 var(--qr-padding) var(--qr-padding) var(--qr-padding);
+  margin-right: var(--qr-padding);
+  margin-left: calc(var(--qr-padding) * -1);
 }
