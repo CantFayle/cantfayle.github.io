@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Routes,
   Route,
   Link,
   useLocation,
-  matchRoutes,
 } from 'react-router-dom';
-import { DarkModeToggle } from './DarkModeToggle';
-import Home from './Home';
-import Experience from './Experience';
-import Hangman from './Hangman';
-import Contact from './Contact';
+import { DarkModeToggle } from './components/DarkModeToggle';
+import Home from './pages/Home';
+import Experience from './pages/Experience';
+import Hangman from './projects/Hangman';
+import Contact from './pages/Contact';
 import './App.css';
 
 const navItems = [

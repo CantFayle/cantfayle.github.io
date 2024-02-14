@@ -1,6 +1,6 @@
 import React from "react";
-import qrSquare from './qr-square.png';
-import './App.css';
+import qrSquare from '../assets/qr-square.png';
+import '../App.css';
 
 export default function Contact() {
   return (
