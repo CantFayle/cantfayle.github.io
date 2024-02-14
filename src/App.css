@@ -6,11 +6,23 @@
   --qr-padding: calc(var(--qr-height) / 18 * -1);
 }
 
+body {
+  --color-background: #dedede;
+  --color-foreground: #000000;
+  --is-dark: 0;
+}
+
+body.dark {
+  --color-background: #1f1f1f;
+  --color-foreground: #FFFFFF;
+  --is-dark: 1;
+}
+
 .page {
   height: 100vh;
   text-align: center;
-  background-color: #000000;
-  color: #FFFFFF;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
 }
 
 .frame {
@@ -20,7 +32,7 @@
   top: var(--pad);
   bottom: var(--pad);
   border-width: 1px;
-  border-color: #FFFFFF;
+  border-color: var(--color-foreground);
   border-style: solid;
   display: flex;
   flex-direction: column;
@@ -103,6 +115,6 @@
   max-width: var(--qr-height);
   flex-grow: 1;
   aspect-ratio: 1;
-  filter: invert(1);
+  filter: invert(var(--is-dark));
   margin: 0 var(--qr-padding) var(--qr-padding) var(--qr-padding);
 }

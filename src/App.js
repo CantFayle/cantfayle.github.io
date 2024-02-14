@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import qr from './qr-code.svg';
+import qrSquare from './qr-square.png';
+import { DarkModeToggle } from './DarkModeToggle';
 
 const navItems = [
   {
@@ -25,14 +26,14 @@ const navItems = [
     title: 'Contact',
     content: () =>
       <>
-        <img src={qr} className="qr" alt={"QR"}/>
+        <img src={qrSquare} className="qr" alt={"QR"}/>
       </>
   },
 ];
 
 function App() {
   const getNav = navTitle => navItems.find(({ title }) => title === navTitle);
-  const [selectedNav, setSelectedNav] = useState(getNav('Home'))
+  const [selectedNav, setSelectedNav] = useState(getNav('Home'));
   return (
     <div className="page">
       <div className="frame">
@@ -45,14 +46,17 @@ function App() {
           </div>
           <div className="content">
             <div className="navigation">
-              {navItems.map(navItem =>
-                <div
-                  className={`nav-item ${navItem.title === selectedNav.title ? 'nav-item-selected' : ''}`}
-                  onClick={() => setSelectedNav(navItem)}
-                >
-                  {navItem.title}
-                </div>
-              )}
+              {navItems.map(navItem => {
+                const isSelected = navItem.title === selectedNav.title;
+                return (
+                  <div
+                    className={`nav-item ${isSelected ? 'nav-item-selected' : ''}`}
+                    onClick={() => setSelectedNav(navItem)}
+                  >
+                    {isSelected ? '⦿' : navItem.title}
+                  </div>
+                );
+              })}
             </div>
             <div className="section">
               {selectedNav.content()}
@@ -60,6 +64,7 @@ function App() {
           </div>
         </div>
       </div>
+      <DarkModeToggle/>
     </div>
   );
 }
